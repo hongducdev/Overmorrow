@@ -37,37 +37,42 @@ class MainSettingEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25, right: 25, top: 5, bottom: 5),
-      child: GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onTap: () {
-          HapticFeedback.selectionClick();
-          if (pushTo != null) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => pushTo!)
-            );
-          }
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(top: 13, bottom: 13),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              circleBorderIcon(icon, context),
-              const SizedBox(width: 20,),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: const TextStyle(fontSize: 20, height: 1.2),),
-                    Text(desc, style: TextStyle(color: Theme.of(context).colorScheme.outline,
-                        fontSize: 15, height: 1.2),)
-                  ],
-                ),
-              )
-            ],
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: () {
+            HapticFeedback.selectionClick();
+            if (pushTo != null) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => pushTo!)
+              );
+            }
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 12),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                circleBorderIcon(icon, context),
+                const SizedBox(width: 20,),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title, style: const TextStyle(fontSize: 20, height: 1.2),),
+                      Text(desc, style: TextStyle(color: Theme.of(context).colorScheme.outline,
+                          fontSize: 15, height: 1.2),)
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -173,81 +178,96 @@ class SettingsEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        HapticFeedback.lightImpact();
-        showDialog<String>(
-            context: context,
-            builder: (BuildContext context) {
-              List<String> options = settingSwitches[rawText] ?? [""];
-              return AlertDialog(
-                backgroundColor: Theme.of(context).colorScheme.surface,
-                content: StatefulBuilder(
-                  builder: (BuildContext context, StateSetter setState) {
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10, top: 10, left: 0),
-                          child: Text(text, style: const TextStyle(fontSize: 22),),
-                        ),
-
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: List<Widget>.generate(options.length, (int index) {
-                            return GestureDetector(
-                              behavior: HitTestBehavior.translucent,
-                              onTap: () {
-                                HapticFeedback.mediumImpact();
-                                Navigator.pop(context);
-                                update(options[index]);
-                              },
-                              child: Row(
-                                children: [
-                                  Radio<String>(
-                                    value: options[index],
-                                    groupValue: selected,
-                                    onChanged: (String? value) {
-                                      HapticFeedback.mediumImpact();
-                                      update(options[index]);
-                                      Navigator.pop(context, value);
-                                    },
+    return Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(20),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: () {
+          HapticFeedback.lightImpact();
+          showDialog<String>(
+              context: context,
+              builder: (BuildContext context) {
+                List<String> options = settingSwitches[rawText] ?? [""];
+                return AlertDialog(
+                  backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
+                  content: StatefulBuilder(
+                    builder: (BuildContext context, StateSetter setState) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10, top: 10, left: 0),
+                            child: Text(text, style: const TextStyle(fontSize: 22),),
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: List<Widget>.generate(options.length, (int index) {
+                              return Material(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(12),
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(12),
+                                  onTap: () {
+                                    HapticFeedback.mediumImpact();
+                                    Navigator.pop(context);
+                                    update(options[index]);
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 4),
+                                    child: Row(
+                                      children: [
+                                        Radio<String>(
+                                          value: options[index],
+                                          groupValue: selected,
+                                          onChanged: (String? value) {
+                                            HapticFeedback.mediumImpact();
+                                            update(options[index]);
+                                            Navigator.pop(context, value);
+                                          },
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            translateSettingOption(options[index], context),
+                                            style: const TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  Text(translateSettingOption(options[index], context), style: const TextStyle(fontSize: 18),)
-                                ],
-                              ),
-                            );
-                          }),
-                        ),
-                      ],
-                    );
-                  },
+                                ),
+                              );
+                            }),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                );
+              }
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+          child: Row(
+            children: [
+              circleBorderIcon(icon, context),
+              const SizedBox(width: 20,),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(text, style: const TextStyle(fontSize: 20, height: 1.2),),
+                    Text(translateSettingOption(selected, context), style: TextStyle(color: Theme.of(context).colorScheme.outline,
+                        fontSize: 15, height: 1.2),)
+                  ],
                 ),
-              );
-            }
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 14, bottom: 14),
-        child: Row(
-          children: [
-            circleBorderIcon(icon, context),
-            const SizedBox(width: 20,),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(text, style: const TextStyle(fontSize: 20, height: 1.2),),
-                  Text(translateSettingOption(selected, context), style: TextStyle(color: Theme.of(context).colorScheme.outline,
-                      fontSize: 15, height: 1.2),)
-                ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

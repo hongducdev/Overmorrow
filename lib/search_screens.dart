@@ -122,7 +122,7 @@ class _MySearchWidgetState extends State<MySearchWidget> {
           isTabletMode: true);
     }
 
-    return SearchBar(
+    return WeatherSearchBar(
         recommend: recommend,
         updateLocation: widget.updateLocation,
         updateFav: updateFav,
@@ -132,7 +132,7 @@ class _MySearchWidgetState extends State<MySearchWidget> {
   }
 }
 
-class SearchBar extends StatelessWidget {
+class WeatherSearchBar extends StatelessWidget {
   final ValueNotifier<List<String>> recommend;
   final Function updateLocation;
   final Function updateFav;
@@ -140,7 +140,7 @@ class SearchBar extends StatelessWidget {
   final Function updateRec;
   final String place;
 
-  SearchBar(
+  const WeatherSearchBar(
       {super.key,
       required this.recommend,
       required this.updateLocation,

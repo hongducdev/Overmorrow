@@ -119,6 +119,46 @@ class BuildMaterialApp extends StatelessWidget {
 
   const BuildMaterialApp({super.key, required this.dynamicLightColorScheme, required this.dynamicDarkColorScheme});
 
+  static ThemeData _buildM3Theme(ColorScheme colorScheme) {
+    return ThemeData(
+      colorScheme: colorScheme,
+      useMaterial3: true,
+      fontFamily: GoogleFonts.googleSansFlex().fontFamily,
+      fontFamilyFallback: const ['NotoSans'],
+      cardTheme: CardThemeData(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        clipBehavior: Clip.antiAlias,
+      ),
+      dialogTheme: DialogThemeData(
+        elevation: 0,
+        backgroundColor: colorScheme.surfaceContainerHigh,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(28),
+        ),
+      ),
+      appBarTheme: AppBarTheme(
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
+        centerTitle: false,
+      ),
+      dividerTheme: DividerThemeData(
+        color: colorScheme.outlineVariant,
+        thickness: 1,
+        space: 1,
+      ),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -153,28 +193,8 @@ class BuildMaterialApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.supportedLocales,
-        theme: ThemeData(
-            colorScheme: lightColorScheme ?? dynamicLightColorScheme,
-            useMaterial3: true,
-            fontFamily: GoogleFonts.googleSansFlex().fontFamily,
-            fontFamilyFallback: const ['NotoSans',],
-            pageTransitionsTheme: const PageTransitionsTheme(
-                builders: {
-                  TargetPlatform.android: FadeForwardsPageTransitionsBuilder()
-                }
-            )
-        ),
-        darkTheme: ThemeData(
-            colorScheme: darkColorScheme ?? dynamicDarkColorScheme,
-            useMaterial3: true,
-            fontFamily: GoogleFonts.googleSansFlex().fontFamily,
-            fontFamilyFallback: const ['NotoSans',],
-            pageTransitionsTheme: const PageTransitionsTheme(
-                builders: {
-                  TargetPlatform.android: FadeForwardsPageTransitionsBuilder()
-                }
-            )
-        ),
+        theme: _buildM3Theme(lightColorScheme ?? dynamicLightColorScheme),
+        darkTheme: _buildM3Theme(darkColorScheme ?? dynamicDarkColorScheme),
         home: AnnotatedRegion<SystemUiOverlayStyle>(
           value: (systemGestureInsets.left > 0)
               ? const SystemUiOverlayStyle(
