@@ -121,6 +121,46 @@ Widget circleBorderIcon(IconData icon, context) {
   );
 }
 
+String translateSettingOption(String option, BuildContext context) {
+  final loc = AppLocalizations.of(context);
+  if (loc == null || loc.localeName != 'vi') return option;
+
+  switch (option) {
+    case 'network':
+      return 'Mạng (Trực tuyến)';
+    case 'asset':
+      return 'Bộ nhớ (Tích hợp sẵn)';
+    case 'image':
+      return 'Theo hình ảnh';
+    case 'wallpaper':
+      return 'Theo hình nền máy';
+    case 'custom':
+      return 'Tùy chỉnh';
+    case 'normal':
+      return 'Bình thường';
+    case 'small':
+      return 'Nhỏ';
+    case 'very small':
+      return 'Rất nhỏ';
+    case 'big':
+      return 'Lớn';
+    case '12 hour':
+      return '12 giờ';
+    case '24 hour':
+      return '24 giờ';
+    case 'mm/dd':
+      return 'Tháng / Ngày (mm/dd)';
+    case 'dd/mm':
+      return 'Ngày / Tháng (dd/mm)';
+    case 'on':
+      return 'Bật';
+    case 'off':
+      return 'Tắt';
+    default:
+      return option;
+  }
+}
+
 class SettingsEntry extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -176,7 +216,7 @@ class SettingsEntry extends StatelessWidget {
                                       Navigator.pop(context, value);
                                     },
                                   ),
-                                  Text(options[index], style: const TextStyle(fontSize: 18),)
+                                  Text(translateSettingOption(options[index], context), style: const TextStyle(fontSize: 18),)
                                 ],
                               ),
                             );
@@ -202,7 +242,7 @@ class SettingsEntry extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(text, style: const TextStyle(fontSize: 20, height: 1.2),),
-                  Text(selected, style: TextStyle(color: Theme.of(context).colorScheme.outline,
+                  Text(translateSettingOption(selected, context), style: TextStyle(color: Theme.of(context).colorScheme.outline,
                       fontSize: 15, height: 1.2),)
                 ],
               ),

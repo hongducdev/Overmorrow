@@ -343,7 +343,7 @@ class _HeroSearchPageState extends State<HeroSearchPage> {
           SnackBar(
             content: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Unable to find place: $submitted"),
+              child: Text("${AppLocalizations.of(context)!.placeNotFound}: $submitted"),
             ),
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(

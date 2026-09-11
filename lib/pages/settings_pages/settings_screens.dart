@@ -79,12 +79,12 @@ class AppearancePage extends StatelessWidget {
                         ),
                       ),
                       children: [
-                        const Padding(
+                        Padding(
                             padding:
-                                EdgeInsets.only(left: 1, bottom: 14, top: 30),
+                                const EdgeInsets.only(left: 1, bottom: 14, top: 30),
                             child: Text(
-                              "app theme",
-                              style: TextStyle(fontSize: 17),
+                              AppLocalizations.of(context)!.localeName == 'vi' ? "Chủ đề ứng dụng" : "app theme",
+                              style: const TextStyle(fontSize: 17),
                             )),
 
                         SegmentedButton(
@@ -97,29 +97,29 @@ class AppearancePage extends StatelessWidget {
                                 .read<ThemeProvider>()
                                 .setBrightness(newSelection.first);
                           },
-                          segments: const [
+                          segments: [
                             ButtonSegment(
-                              icon: Icon(Icons.light_mode_outlined),
+                              icon: const Icon(Icons.light_mode_outlined),
                               value: "light",
                               label: Text(
-                                "light",
-                                style: TextStyle(fontSize: 18),
+                                AppLocalizations.of(context)!.localeName == 'vi' ? "Sáng" : "light",
+                                style: const TextStyle(fontSize: 18),
                               ),
                             ),
                             ButtonSegment(
-                              icon: Icon(Icons.dark_mode_outlined),
+                              icon: const Icon(Icons.dark_mode_outlined),
                               value: "dark",
                               label: Text(
-                                "dark",
-                                style: TextStyle(fontSize: 18),
+                                AppLocalizations.of(context)!.localeName == 'vi' ? "Tối" : "dark",
+                                style: const TextStyle(fontSize: 18),
                               ),
                             ),
                             ButtonSegment(
-                              icon: Icon(Icons.brightness_6_outlined),
+                              icon: const Icon(Icons.brightness_6_outlined),
                               value: "auto",
                               label: Text(
-                                "auto",
-                                style: TextStyle(fontSize: 18),
+                                AppLocalizations.of(context)!.localeName == 'vi' ? "Tự động" : "auto",
+                                style: const TextStyle(fontSize: 18),
                               ),
                             ),
                           ],
@@ -583,6 +583,28 @@ class LayoutPage extends StatelessWidget {
     "air quality"
   ];
 
+  static String _getLayoutItemName(String name, AppLocalizations loc) {
+    final isVi = loc.localeName == 'vi';
+    switch (name) {
+      case "sunstatus":
+        return isVi ? "Mặt trời mọc/lặn" : "sun status";
+      case "rain indicator":
+        return isVi ? "Lượng mưa 15 phút" : "rain indicator";
+      case "hourly":
+        return isVi ? "Dự báo hàng giờ" : "hourly";
+      case "alerts":
+        return loc.alertsCapital;
+      case "radar":
+        return loc.radar;
+      case "daily":
+        return isVi ? "Dự báo hàng ngày" : "daily";
+      case "air quality":
+        return loc.airQuality;
+      default:
+        return name;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     List<String> _items = context.watch<SettingsProvider>().getLayout;
@@ -669,7 +691,7 @@ class LayoutPage extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Text(
-                                  _items[index],
+                                  _getLayoutItemName(_items[index], AppLocalizations.of(context)!),
                                   style: const TextStyle(fontSize: 19),
                                 ),
                               ),
@@ -740,7 +762,7 @@ class LayoutPage extends StatelessWidget {
                                 padding:
                                     const EdgeInsets.only(left: 3, right: 3),
                                 child: Text(
-                                  removed[i],
+                                  _getLayoutItemName(removed[i], AppLocalizations.of(context)!),
                                   style: const TextStyle(fontSize: 17),
                                 ),
                               ),

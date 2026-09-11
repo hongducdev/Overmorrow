@@ -305,7 +305,7 @@ class MyHomePageState extends State<MyHomePage> {
       await Future.delayed(const Duration(milliseconds: 600));
       setState(() {
         weatherError = WeatherError(
-          errorTitle: "Http exception with status",
+          errorTitle: AppLocalizations.of(context)!.localeName == 'vi' ? "Lỗi phản hồi máy chủ" : "Http exception with status",
           errorIcon: Icons.signal_wifi_bad,
           errorDesc: exception.toString(),
           location: location,
@@ -333,7 +333,7 @@ class MyHomePageState extends State<MyHomePage> {
       }
       setState(() {
         weatherError = WeatherError(
-          errorTitle: "General Error",
+          errorTitle: AppLocalizations.of(context)!.localeName == 'vi' ? "Đã xảy ra lỗi" : "General Error",
           errorIcon: Icons.bug_report_outlined,
           errorDesc: e.toString(),
           location: location,

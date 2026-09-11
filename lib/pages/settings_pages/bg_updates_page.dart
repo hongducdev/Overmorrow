@@ -333,7 +333,7 @@ class _BackgroundUpdatesPageState extends State<BackgroundUpdatesPage> {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text("Current Location ($currentLocationName)", style: const TextStyle(
+                                        child: Text("${AppLocalizations.of(context)!.currentLocation} ($currentLocationName)", style: const TextStyle(
                                             fontSize: 16, height: 1.2),),
                                       ),
                                       if (isCurrentSelected) Icon(

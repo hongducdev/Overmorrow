@@ -34,6 +34,15 @@ import '../../l10n/app_localizations.dart';
 import '../services/preferences_service.dart';
 
 
+String getUvLevelText(int? uv, AppLocalizations loc) {
+  if (uv == null) return "--";
+  if (uv >= 11) return loc.severe;
+  if (uv >= 8) return loc.veryPoor;
+  if (uv >= 6) return loc.high;
+  if (uv >= 3) return loc.moderate;
+  return loc.low;
+}
+
 double transformToConcentrated(double delta, int span) {
   double absDelta = delta.abs();
   double exitBoost = pow((absDelta - 0.25) / span, 20).toDouble() * span;
@@ -631,11 +640,11 @@ class _HourlyBottomSheetState extends State<HourlyBottomSheet> with SingleTicker
                                     style: TextStyle(fontSize: 40, height: 1.12, color: Theme.of(context).colorScheme.primary),
                                   ),
                                 ),
-                                const Expanded(
+                                Expanded(
                                   flex: 4,
                                   child: Text(
-                                    "low",
-                                    style: TextStyle(fontSize: 15),
+                                    getUvLevelText(hour.uv, AppLocalizations.of(context)!),
+                                    style: const TextStyle(fontSize: 15),
                                   ),
                                 )
                               ]

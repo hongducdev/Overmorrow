@@ -215,6 +215,20 @@
     "locationPermissionIsDenied": "quuyền vị trí bị từ chối",
     "locationPermissionDeniedForever": "quuyền vị trí bị từ chối vĩnh viễn",
     "grantLocationPermission": "cấp quyền vị trí",
-    "fair": "trời quang",
-    "unhealthy": "xấu"
+    "fair": "chấp nhận được",
+    "unhealthy": "xấu",
+    "sumLowercase": "tổng",
+    "hr": "giờ",
+    "birchPollen": "Phấn hoa bạch dương",
+    "grassPollen": "Phấn hoa cỏ",
+    "mugwortPollen": "Phấn hoa ngải cứu",
+    "olivePollen": "Phấn hoa ô liu",
+    "ragweedPollen": "Phấn hoa cỏ phấn hương",
+    "dailyAqi": "AQI hàng ngày",
+    "dateFormat": "Định dạng ngày",
+    "d": "ng",
+    "aerosolOpticalDepth": "độ dày quang học sol khí",
+    "dust": "bụi",
+    "europeanAqi": "AQI Châu Âu",
+    "unitedStatesAqi": "AQI Hoa Kỳ"
 }

@@ -85,6 +85,14 @@ Widget pollenWidget(IconData icon, String name, double value, WeatherData data, 
   }
 
   String severity = categoryNames[categoryIndex];
+  String localizedSeverity = severity;
+  final loc = AppLocalizations.of(context);
+  if (loc != null) {
+    if (severity == "none") localizedSeverity = loc.localeName == 'vi' ? "không" : "none";
+    if (severity == "low") localizedSeverity = loc.low;
+    if (severity == "medium") localizedSeverity = loc.localeName == 'vi' ? "vừa phải" : "medium";
+    if (severity == "high") localizedSeverity = loc.high;
+  }
 
   return Padding(
     padding: const EdgeInsets.only(top:5, bottom: 5),
@@ -103,7 +111,7 @@ Widget pollenWidget(IconData icon, String name, double value, WeatherData data, 
             ),
             padding: const EdgeInsets.only(top: 8, bottom: 8),
             width: 75,
-            child: Center(child: Text(severity, style: TextStyle(color: Theme.of(context).colorScheme.onSecondaryContainer, fontSize: 15)))
+            child: Center(child: Text(localizedSeverity, style: TextStyle(color: Theme.of(context).colorScheme.onSecondaryContainer, fontSize: 15)))
         ),
       ],
     ),
@@ -256,7 +264,7 @@ class _AllergensPageState extends State<AllergensPage> {
                             padding: const EdgeInsets.all(14.0),
                             child: Icon(Icons.wifi_off_rounded, color: Theme.of(context).colorScheme.primary, size: 23,),
                           ),
-                          const Text("no wifi connection", style: TextStyle(fontSize: 18))
+                          Text(AppLocalizations.of(context)!.localeName == 'vi' ? "Không có kết nối mạng" : "no wifi connection", style: const TextStyle(fontSize: 18))
                         ],
                       ),
                     );
@@ -269,7 +277,7 @@ class _AllergensPageState extends State<AllergensPage> {
                           padding: const EdgeInsets.all(14.0),
                           child: Icon(Icons.wifi_off_rounded, color: Theme.of(context).colorScheme.primary, size: 23,),
                         ),
-                        const Text("no wifi connection", style: TextStyle(fontSize: 18)),
+                        Text(AppLocalizations.of(context)!.localeName == 'vi' ? "Không có kết nối mạng" : "no wifi connection", style: const TextStyle(fontSize: 18)),
                         Padding(
                           padding: const EdgeInsets.all(30.0),
                           child: Text("${snapshot.error} ${snapshot.stackTrace}",

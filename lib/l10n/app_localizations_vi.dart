@@ -137,7 +137,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get good => 'tốt';
 
   @override
-  String get fair => 'trời quang';
+  String get fair => 'chấp nhận được';
 
   @override
   String get moderate => 'vừa phải';
@@ -203,7 +203,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get imageSource => 'Nguồn ảnh';
 
   @override
-  String get sumLowercase => 'sum';
+  String get sumLowercase => 'tổng';
 
   @override
   String get precipLowercase => 'lượng mưa';
@@ -309,7 +309,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get now => 'bây giờ';
 
   @override
-  String get hr => 'hr';
+  String get hr => 'giờ';
 
   @override
   String get layout => 'Bố cục';
@@ -327,40 +327,40 @@ class AppLocalizationsVi extends AppLocalizations {
   String get alderPollen => 'Phấn hoa cây trăn';
 
   @override
-  String get birchPollen => 'Birch Pollen';
+  String get birchPollen => 'Phấn hoa bạch dương';
 
   @override
-  String get grassPollen => 'Grass Pollen';
+  String get grassPollen => 'Phấn hoa cỏ';
 
   @override
-  String get mugwortPollen => 'Mugwort Pollen';
+  String get mugwortPollen => 'Phấn hoa ngải cứu';
 
   @override
-  String get olivePollen => 'Olive Pollen';
+  String get olivePollen => 'Phấn hoa ô liu';
 
   @override
-  String get ragweedPollen => 'Ragweed Pollen';
+  String get ragweedPollen => 'Phấn hoa cỏ phấn hương';
 
   @override
-  String get dailyAqi => 'daily AQI';
+  String get dailyAqi => 'AQI hàng ngày';
 
   @override
-  String get dateFormat => 'Date format';
+  String get dateFormat => 'Định dạng ngày';
 
   @override
-  String get d => 'd';
+  String get d => 'ng';
 
   @override
-  String get aerosolOpticalDepth => 'aerosol optical depth';
+  String get aerosolOpticalDepth => 'độ dày quang học sol khí';
 
   @override
-  String get dust => 'dust';
+  String get dust => 'bụi';
 
   @override
-  String get europeanAqi => 'europæisk aqi';
+  String get europeanAqi => 'AQI Châu Âu';
 
   @override
-  String get unitedStatesAqi => 'USA AQI';
+  String get unitedStatesAqi => 'AQI Hoa Kỳ';
 
   @override
   String get offline => 'ngoại tuyến';
