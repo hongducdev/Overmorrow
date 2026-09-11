@@ -103,7 +103,7 @@ flutter:
     - assets/weather_icons/
     - assets/m3shapes/
     - assets/map/
-
+    - google_fonts/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -129,9 +129,28 @@ flutter:
   #
 
   fonts:
+    - family: GoogleSansFlex
+      fonts:
+        - asset: google_fonts/GoogleSansFlex-Thin.ttf
+          weight: 100
+        - asset: google_fonts/GoogleSansFlex-ExtraLight.ttf
+          weight: 200
+        - asset: google_fonts/GoogleSansFlex-Light.ttf
+          weight: 300
+        - asset: google_fonts/GoogleSansFlex-Regular.ttf
+          weight: 400
+        - asset: google_fonts/GoogleSansFlex-Medium.ttf
+          weight: 500
+        - asset: google_fonts/GoogleSansFlex-SemiBold.ttf
+          weight: 600
+        - asset: google_fonts/GoogleSansFlex-Bold.ttf
+          weight: 700
+        - asset: google_fonts/GoogleSansFlex-ExtraBold.ttf
+          weight: 800
+        - asset: google_fonts/GoogleSansFlex-Black.ttf
+          weight: 900
     - family: NotoSans
       fonts:
         - asset: fonts/NotoSans_Condensed-Regular.ttf
-
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

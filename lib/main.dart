@@ -156,7 +156,7 @@ class BuildMaterialApp extends StatelessWidget {
         theme: ThemeData(
             colorScheme: lightColorScheme ?? dynamicLightColorScheme,
             useMaterial3: true,
-            fontFamily: GoogleFonts.outfit().fontFamily,
+            fontFamily: GoogleFonts.googleSansFlex().fontFamily,
             fontFamilyFallback: const ['NotoSans',],
             pageTransitionsTheme: const PageTransitionsTheme(
                 builders: {
@@ -167,7 +167,7 @@ class BuildMaterialApp extends StatelessWidget {
         darkTheme: ThemeData(
             colorScheme: darkColorScheme ?? dynamicDarkColorScheme,
             useMaterial3: true,
-            fontFamily: GoogleFonts.outfit().fontFamily,
+            fontFamily: GoogleFonts.googleSansFlex().fontFamily,
             fontFamilyFallback: const ['NotoSans',],
             pageTransitionsTheme: const PageTransitionsTheme(
                 builders: {

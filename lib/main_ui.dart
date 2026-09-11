@@ -143,7 +143,7 @@ class _TempAndConditionTextState extends State<TempAndConditionText> {
         Text(
           translateCondition(widget.data.current.condition,
               AppLocalizations.of(context)!),
-          style: GoogleFonts.outfit(
+          style: GoogleFonts.googleSansFlex(
             color: colorsOnImage?.descColor ?? Theme.of(context).colorScheme.surface,
             fontSize: 32,
             height: 1.05,
@@ -188,7 +188,7 @@ class _SmoothTempTransitionState extends State<SmoothTempTransition> with Automa
       builder: (context, current, child) {
         return Text(
           "${current.round()}°",
-          style: GoogleFonts.outfit(
+          style: GoogleFonts.googleSansFlex(
             color: widget.color,
             fontSize: widget.fontSize,
             height: 1.05,

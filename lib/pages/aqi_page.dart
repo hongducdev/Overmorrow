@@ -486,7 +486,7 @@ Widget aqiCircleAndDesc(WeatherData data, context) {
                   children: [
                     Text(
                       data.aqi.aqiIndex.toString(),
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.googleSansFlex(
                         color: Theme.of(context).colorScheme.secondary,
                         fontSize: 65,
                         height: 1.2,

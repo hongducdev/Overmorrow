@@ -696,7 +696,7 @@ class _HourlyBottomSheetState extends State<HourlyBottomSheet> with SingleTicker
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.onInverseSurface,
                             fontSize: 17,
-                            fontFamily: GoogleFonts.outfit().fontFamily,
+                            fontFamily: GoogleFonts.googleSansFlex().fontFamily,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
