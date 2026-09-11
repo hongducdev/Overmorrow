@@ -586,7 +586,7 @@ class ProviderSelector extends StatelessWidget {
                         child: Icon(Icons.unfold_more, color: Theme.of(context).colorScheme.primary, size: 22,),
                       ),
                       value: context.select((SettingsProvider p) => p.getWeatherProvider),
-                      items: ["weatherapi", "open-meteo", "met-norway", "meteo-france"].map((item) {
+                      items: ["weatherapi", "open-meteo", "met-norway", "meteo-france", "msn"].map((item) {
                         return DropdownMenuItem(
                           value: item,
                           child: Padding(

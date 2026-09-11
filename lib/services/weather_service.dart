@@ -29,6 +29,7 @@ import '../weather_refact.dart';
 
 String getRain15MinuteLocalization(String key, int time, AppLocalizations localizations) {
   switch (key) {
+    case "": return "";
     case "rainInHalfHour" : return localizations.rainInHalfHour;
     case "rainInMinutes" : return localizations.rainInMinutes(time);
     case "rainInOneHour" : return localizations.rainInOneHour;
@@ -37,7 +38,7 @@ String getRain15MinuteLocalization(String key, int time, AppLocalizations locali
     case "rainExpectedInOneHour" : return localizations.rainExpectedInOneHour;
     case "rainExpectedInHours" : return localizations.rainExpectedInHours(time);
 
-    default: return "wrong key: $key";
+    default: return "";
   }
 }
 

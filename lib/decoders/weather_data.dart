@@ -22,6 +22,7 @@ import 'package:overmorrow/decoders/decode_RV.dart';
 import 'package:overmorrow/decoders/decode_mf.dart';
 import 'package:overmorrow/decoders/decode_mn.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:overmorrow/decoders/decode_msn.dart';
 import 'decode_wapi.dart';
 import 'package:flutter/material.dart';
 
@@ -233,6 +234,9 @@ class WeatherData {
     else if (provider == "met-norway"){
       return MetNGetWeatherData(lat, lng, placeName);
     }
+    else if (provider == "msn"){
+      return msnGetWeatherData(lat, lng, placeName);
+    }
     else {
       return oMGetWeatherData(lat, lng, placeName);
     }
@@ -289,6 +293,8 @@ class LightCurrentWeatherData {
         return mfGetLightCurrentData(placeName, lat, lng, prefs);
       case "met-norway":
         return metNGetLightCurrentData(placeName, lat, lng, prefs);
+      case "msn":
+        return msnGetLightCurrentData(placeName, lat, lng, prefs);
       default:
         return omGetLightCurrentData(placeName, lat, lng, prefs);
     }
@@ -319,6 +325,8 @@ class LightWindData {
         return mfGetLightWindData(lat, lon, prefs);
       case "met-norway":
         return metNGetLightWindData(lat, lon, prefs);
+      case "msn":
+        return msnGetLightWindData(lat, lon, prefs);
       default:
         return omGetLightWindData(lat, lon, prefs);
     }
@@ -345,6 +353,8 @@ class LightUvData {
         return mfGetLightUvData(lat, lon, prefs);
       case "met-norway":
         return metNGetLightUvData(lat, lon, prefs);
+      case "msn":
+        return msnGetLightUvData(lat, lon, prefs);
       default:
         return omGetLightUvData(lat, lon, prefs);
     }
@@ -393,6 +403,8 @@ class LightHourlyForecastData {
         return mfGetLightHourlyData(placeName, lat, lon, prefs);
       case "met-norway":
         return metNGetLightHourlyData(placeName, lat, lon, prefs);
+      case "msn":
+        return msnGetLightHourlyData(placeName, lat, lon, prefs);
       default:
         return omGetHourlyForecast(placeName, lat, lon, prefs);
     }
@@ -435,6 +447,8 @@ class LightDailyForecastData {
         return wapiGetLightDailyData(placeName, lat, lon, prefs);
       case "met-norway":
         return metNGetLightDailyData(placeName, lat, lon, prefs);
+      case "msn":
+        return msnGetLightDailyData(placeName, lat, lon, prefs);
       default:
         return omGetLightDailyData(placeName, lat, lon, prefs);
     }
