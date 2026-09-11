@@ -415,10 +415,10 @@ class AppLocalizationsPl extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       hours,
       locale: localeName,
-      other: '$hours hours',
-      one: 'hour',
+      other: 'najbliższych $hours godz.',
+      one: 'najbliższej godziny',
     );
-    return 'deszcz w ciągu następnych $_temp0';
+    return 'deszcz w ciągu $_temp0';
   }
 
   @override
@@ -440,10 +440,10 @@ class AppLocalizationsPl extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       hours,
       locale: localeName,
-      other: '$hours hours',
-      one: 'hour',
+      other: 'najbliższych $hours godz.',
+      one: 'najbliższej godziny',
     );
-    return 'spodziewany deszcz za $_temp0';
+    return 'opady deszczu spodziewane w ciągu $_temp0';
   }
 
   @override
@@ -456,8 +456,8 @@ class AppLocalizationsPl extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       hours,
       locale: localeName,
-      other: '$hours hours',
-      one: '1 hour',
+      other: '$hours godz.',
+      one: '1 godz.',
     );
     return 'zaktualizowano, $_temp0 temu';
   }
