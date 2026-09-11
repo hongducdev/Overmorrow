@@ -158,7 +158,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get colorMode => 'Chế độ màu';
 
   @override
-  String get weatherProvderLowercase => 'nhà cung cấp thông tin thời tiết';
+  String get weatherProvderLowercase => 'nhà cung cấp thời tiết';
 
   @override
   String get timeMode => 'Chế độ thời gian';
@@ -309,7 +309,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get now => 'bây giờ';
 
   @override
-  String get hr => 'giờ';
+  String get hr => 'h';
 
   @override
   String get layout => 'Bố cục';
@@ -528,7 +528,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get liveRadar => 'radar trực tiếp';
 
   @override
-  String get ongoingNotification => 'thông báo thường trực';
+  String get ongoingNotification => 'Thông báo thường trực';
 
   @override
   String get north => 'B';

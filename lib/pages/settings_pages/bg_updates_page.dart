@@ -71,6 +71,16 @@ class TimeLinePainter extends CustomPainter {
   }
 }
 
+String formatWorkerState(String state, bool isVi) {
+  if (!isVi) return state;
+  if (state == "unknown" || state == "--") return "Chưa có dữ liệu tác vụ ngầm";
+  return state
+      .replaceAll("WORKER RESULT SUCCESS AT", "CẬP NHẬT THÀNH CÔNG LÚC")
+      .replaceAll("WORKER RESULT FAILURE AT", "CẬP NHẬT THẤT BẠI LÚC")
+      .replaceAll("ONGOING NOTIFICATION", "THÔNG BÁO THƯỜNG TRỰC")
+      .replaceAll("NO WIDGETS INSTALLED", "KHÔNG CÓ WIDGET NÀO ĐƯỢC CÀI ĐẶT");
+}
+
 class BackgroundUpdatesPage extends StatefulWidget {
 
   const BackgroundUpdatesPage({Key? key}) : super(key: key);
@@ -129,8 +139,13 @@ class _BackgroundUpdatesPageState extends State<BackgroundUpdatesPage> {
 
     final currentLocationName = PreferenceUtils.getString("LastKnownPositionName", "unknown");
     final currentLocationLatLon = PreferenceUtils.getString("LastKnownPositionCord", "unknown");
+    final loc = AppLocalizations.of(context)!;
+    final isVi = loc.localeName == 'vi';
     bool isCurrentSelected = context.select((SettingsProvider p) => p.getOngoingNotificationPlace) == "Current Location";
-
+    String displayLocationName = currentLocationName;
+    if (displayLocationName == "unknown") {
+      displayLocationName = isVi ? "Chưa xác định" : "unknown";
+    }
     return Material(
       color: Theme.of(context).colorScheme.surface,
       child: CustomScrollView(
@@ -180,7 +195,7 @@ class _BackgroundUpdatesPageState extends State<BackgroundUpdatesPage> {
                                         fontSize: 36, fontWeight: FontWeight.w600, height: 1.1),),
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 1, left: 5),
-                                      child: Text("updates in the last 24 hours", style: TextStyle(color: Theme.of(context).colorScheme.onSurface,
+                                      child: Text(isVi ? "lần cập nhật trong 24 giờ qua" : "updates in the last 24 hours", style: TextStyle(color: Theme.of(context).colorScheme.onSurface,
                                         fontSize: 16),),
                                     ),
                                   ],
@@ -227,7 +242,7 @@ class _BackgroundUpdatesPageState extends State<BackgroundUpdatesPage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "learn more:",
+                                        isVi ? "tìm hiểu thêm:" : "learn more:",
                                         style: TextStyle(color: Theme.of(context).colorScheme.outline, fontSize: 14),
                                       ),
                                       GestureDetector(
@@ -265,7 +280,7 @@ class _BackgroundUpdatesPageState extends State<BackgroundUpdatesPage> {
                                                       child: Icon(Icons.bug_report_outlined, size: 19, color: Theme.of(context).colorScheme.tertiary)
                                                     ),
                                                     const SizedBox(height: 20,),
-                                                    Text(widgetBackgroundState,
+                                                    Text(formatWorkerState(widgetBackgroundState, isVi),
                                                         style: const TextStyle(fontSize: 16)),
                                                   ],
                                                 );
@@ -281,9 +296,9 @@ class _BackgroundUpdatesPageState extends State<BackgroundUpdatesPage> {
                                           borderRadius: BorderRadius.circular(50)
                                       ),
                                       padding: const EdgeInsets.all(10),
-                                      child: const Row(
+                                      child: Row(
                                         children: [
-                                          Text("worker logs",
+                                          Text(isVi ? "nhật ký tác vụ" : "worker logs",
                                               style: TextStyle(fontSize: 16)),
                                           const SizedBox(width: 10,),
                                           Icon(Icons.open_in_new, size: 17,),
@@ -333,7 +348,7 @@ class _BackgroundUpdatesPageState extends State<BackgroundUpdatesPage> {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text("${AppLocalizations.of(context)!.currentLocation} ($currentLocationName)", style: const TextStyle(
+                                        child: Text("${loc.currentLocation} ($displayLocationName)", style: const TextStyle(
                                             fontSize: 16, height: 1.2),),
                                       ),
                                       if (isCurrentSelected) Icon(
@@ -388,7 +403,7 @@ class _BackgroundUpdatesPageState extends State<BackgroundUpdatesPage> {
 
                         Padding(
                           padding: const EdgeInsets.only(top: 20, bottom: 4),
-                          child: Text(AppLocalizations.of(context)!.weatherProvderLowercase),
+                          child: Text(isVi ? "Nhà cung cấp thời tiết" : loc.weatherProvderLowercase, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),),
                         ),
 
                         SingleChildScrollView(
